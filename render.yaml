@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: npc-ai-server
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ALLOWED_TOKENS
+        value: "secret123,test456"
